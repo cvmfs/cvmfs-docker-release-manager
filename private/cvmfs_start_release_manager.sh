@@ -17,7 +17,7 @@ echo "   upstream: $upstream"
 echo "    key_dir: $key_dir"
 
 # 2. Set up CVMFS repository in "Release manager" mode
-cvmfs_server mkfs -f overlayfs -w $stratum0 -u $upstream -k $key_dir -o root $repo_name
+cvmfs_server mkfs -w $stratum0 -u $upstream -k $key_dir -o root $repo_name
 
 # 2. Drop user into an interactive shell
 bash

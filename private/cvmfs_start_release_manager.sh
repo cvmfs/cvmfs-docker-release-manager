@@ -3,7 +3,6 @@
 echo "Welcome to the CernVM-FS Release Manager"
 
 # 1. Read the CVMFS release manager configuration
-# Stratum0 URL
 config_file=/cvmfs_release_manager/config/repo_config.json
 repo_name=$(cat $config_file | jq -r '.repo_name')
 stratum0=$(cat $config_file | jq -r '.stratum0')

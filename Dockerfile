@@ -1,13 +1,20 @@
 FROM ubuntu:xenial
 
+ARG cvmfs_config_package_url
+ARG cvmfs_config_package
+
+ARG cvmfs_package_url
+ARG cvmfs_client_package
+ARG cvmfs_server_package
+
 RUN apt-get update && apt-get dist-upgrade && apt-get install -y apt-utils curl git jq kmod
-RUN curl -O https://ecsft.cern.ch/dist/cvmfs/nightlies/cvmfs-git-551/cvmfs_2.5.0~0.551git72e9055d046bbb78+ubuntu16.04_amd64.deb; \
-    curl -O http://ecsft.cern.ch/dist/cvmfs/cvmfs-config/cvmfs-config-default_latest_all.deb; \
-    curl -O https://ecsft.cern.ch/dist/cvmfs/nightlies/cvmfs-git-551/cvmfs-server_2.5.0~0.551git72e9055d046bbb78+ubuntu16.04_amd64.deb; \
-    dpkg -i cvmfs-config-default_latest_all.deb; \
-    dpkg -i cvmfs_2.5.0~0.551git72e9055d046bbb78+ubuntu16.04_amd64.deb; \
-    dpkg -i cvmfs-server_2.5.0~0.551git72e9055d046bbb78+ubuntu16.04_amd64.deb; \
+RUN curl -O $cvmfs_config_package_url/$cvmfs_config_package; \
+    curl -O $cvmfs_package_url/$cvmfs_client_package; \
+    curl -O $cvmfs_package_url/$cvmfs_server_package; \
+    dpkg -i $cvmfs_config_package; \
+    dpkg -i $cvmfs_client_package; \
+    dpkg -i $cvmfs_server_package; \
     apt-get -y -f install; \
-    rm -f cvmfs_2.5.0~0.551git72e9055d046bbb78+ubuntu16.04_amd64.deb cvmfs-server_2.5.0~0.551git72e9055d046bbb78+ubuntu16.04_amd64.deb
+    rm -f $cvmfs_client_package $cvmfs_config_package $cvmfs_server_package
 
 COPY private/cvmfs_start_release_manager.sh /usr/local/bin/

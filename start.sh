@@ -9,9 +9,14 @@ if [ x"$config_dir" = x"" ] || [ x"$data_dir" = x"" ] || [ x"$spool_dir" = x"" ]
     exit 1;
 fi
 
+name_tag=$4
+if [ x"$name_tag" = x"" ]; then
+    name_tag=cvmfs-docker-release-manager:latest
+fi
+
 docker run --rm -it --privileged \
     --mount type=bind,source="$config_dir",destination=/cvmfs_release_manager/config \
     --mount type=bind,source="$data_dir",destination=/cvmfs_release_manager/data \
     --mount type=bind,source="$spool_dir",destination=/var/spool/cvmfs \
-    cvmfs-docker-release-manager \
+    $name_tag \
     /usr/local/bin/cvmfs_start_release_manager.sh

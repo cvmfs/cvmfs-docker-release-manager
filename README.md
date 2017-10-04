@@ -40,7 +40,7 @@ container environment:
 To start the container:
 
 ```
-$ ./start.sh <CONFIG_DIR> <DATA_DIR> <SPOOL_DIR>
+$ ./start.sh <CONFIG_DIR> <DATA_DIR> <SPOOL_DIR> [<CONTAINER_NAME:TAG>]
 ```
 
 The container runs by default in interactive mode, dropping the user into an interactive bash

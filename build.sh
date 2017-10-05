@@ -3,9 +3,9 @@
 cvmfs_config_package_url=http://ecsft.cern.ch/dist/cvmfs/cvmfs-config
 cvmfs_config_package=cvmfs-config-default_latest_all.deb
 
-cvmfs_package_url=https://ecsft.cern.ch/dist/cvmfs/nightlies/cvmfs-git-551
-cvmfs_client_package=cvmfs_2.5.0~0.551git72e9055d046bbb78+ubuntu16.04_amd64.deb
-cvmfs_server_package=cvmfs-server_2.5.0~0.551git72e9055d046bbb78+ubuntu16.04_amd64.deb
+cvmfs_package_url=https://ecsft.cern.ch/dist/cvmfs/nightlies/cvmfs-git-555
+cvmfs_client_package=cvmfs_2.5.0~0.555git0cc72aba1696494b+ubuntu16.04_amd64.deb
+cvmfs_server_package=cvmfs-server_2.5.0~0.555git0cc72aba1696494b+ubuntu16.04_amd64.deb
 
 name_tag=$1
 if [ x"$name_tag" = x"" ]; then

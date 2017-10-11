@@ -19,6 +19,9 @@ echo "      upstream: $upstream"
 echo "       key_dir: $key_dir"
 echo ""
 
+# Ignore Kernel version check for OverlayFS
+export CVMFS_DONT_CHECK_OVERLAYFS_VERSION=1
+
 # 2. Set up CVMFS repository in "Release manager" mode
 cvmfs_server mkfs -w $stratum0 -u $upstream -k $key_dir -o root $repo_name
 

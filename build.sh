@@ -1,11 +1,6 @@
 #!/bin/sh
 
-cvmfs_config_package_url=http://ecsft.cern.ch/dist/cvmfs/cvmfs-config
-cvmfs_config_package=cvmfs-config-default_latest_all.deb
-
-cvmfs_package_url=https://ecsft.cern.ch/dist/cvmfs/nightlies/cvmfs-git-583
-cvmfs_client_package=cvmfs_2.5.0~0.583git07c93e85b47048c1+ubuntu16.04_amd64.deb
-cvmfs_server_package=cvmfs-server_2.5.0~0.583git07c93e85b47048c1+ubuntu16.04_amd64.deb
+cvmfs_release_url=https://ecsft.cern.ch/dist/cvmfs/cvmfs-release/cvmfs-release-latest_all.deb
 
 name_tag=$1
 if [ x"$name_tag" = x"" ]; then
@@ -14,9 +9,5 @@ if [ x"$name_tag" = x"" ]; then
 fi
 
 docker build . \
-       --build-arg cvmfs_config_package_url=$cvmfs_config_package_url \
-       --build-arg cvmfs_config_package=$cvmfs_config_package \
-       --build-arg cvmfs_package_url=$cvmfs_package_url \
-       --build-arg cvmfs_client_package=$cvmfs_client_package \
-       --build-arg cvmfs_server_package=$cvmfs_server_package \
+       --build-arg cvmfs_release_url=$cvmfs_release_url \
        -t $name_tag

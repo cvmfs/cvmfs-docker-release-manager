@@ -14,7 +14,10 @@ if [ x"$name_tag" = x"" ]; then
     name_tag=cvmfs-docker-release-manager:latest
 fi
 
-docker run --rm -it --privileged \
+#     --privileged \
+docker run --rm -it \
+    --device /dev/fuse \
+    --cap-add SYS_ADMIN \
     --mount type=bind,source="$config_dir",destination=/cvmfs_release_manager/config \
     --mount type=bind,source="$data_dir",destination=/cvmfs_release_manager/data \
     --mount type=bind,source="$spool_dir",destination=/var/spool/cvmfs \
